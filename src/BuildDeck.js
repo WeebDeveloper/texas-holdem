@@ -1,7 +1,7 @@
 import cardObj from "./cardObj.js";
 
+//This function declares the suits and ranks, then pushes them into individual card objects, and returns a full deck of objects.
 export default function BuildDeck() {
-    //This function declares the suits and ranks, then pushes them into individual card objects, and returns a full deck of objects.
     const deckSuits = ["Spades", "Clubs", "Diamonds", "Hearts"];
     const deckRanks = [
       "2",

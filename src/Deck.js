@@ -6,14 +6,14 @@ import BuildDeck from "./BuildDeck";
 export default function Deck() {
   const [deck, setDeck] = useState([]);
 
-  //this useEffect hook calls the makeDeck function, and sets the deck state to the result of that function on the initial render
+  //calls the makeDeck function, and sets the deck state to the result of that function on the initial render
   useEffect(() => setDeck(BuildDeck()), []);
 
-  //Todo: Make deck 'global' (useContext?), and move function to a separate file
-  //take two cards from a random location in array "deck"
+  //Todo: Make deck 'global' (useContext?), and move ShuffleDeck function to a separate file
+  //take two cards from random locations in array deck
   //put the first in a temporary variable
   //put the second, and put it in the first card's original location
-  //put the card held in the temporary variable in the second one's position, and repeat "shuffle" times
+  //put the card held in the temporary variable in the second one's position, and repeat 1000 times
   function ShuffleDeck() {
     let deck = BuildDeck();
     for (var i = 0; i < 1000; i++) {
@@ -23,6 +23,7 @@ export default function Deck() {
       deck[location1] = deck[location2];
       deck[location2] = tmp;
     }
+    //console.log("deck shuffled");
     return deck;
   }
 
@@ -30,9 +31,7 @@ export default function Deck() {
   return (
     <>
       <button onClick={() => setDeck(BuildDeck)}>Reset Deck</button>
-      <button onClick={() => setDeck(ShuffleDeck(BuildDeck))}>
-        Shuffle Deck
-      </button>
+      <button onClick={() => setDeck(ShuffleDeck())}>Shuffle Deck</button>
       <p>{JSON.stringify(deck)}</p>
     </>
   );
